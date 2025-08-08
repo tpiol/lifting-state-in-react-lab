@@ -6,7 +6,7 @@ const IngredientList = (props) => {
         <ul>
             {props.availableIngredients.map((ingredient, index) => {
                 return (
-                    <li style={{backgroundColor: ingredient.color}}>
+                    <li key={index} style={{backgroundColor: ingredient.color}}>
                       
                             {ingredient.name}
                             <button>add</button>

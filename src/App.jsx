@@ -6,6 +6,7 @@ import './App.css';
 
 const App = () => {
   const [stack, setStack] = useState([])
+ 
   const availableIngredients = [
     { name: 'Kaiser Bun', color: 'saddlebrown' },
     { name: 'Sesame Bun', color: 'sandybrown' },
@@ -23,6 +24,8 @@ const App = () => {
     { name: 'Swiss Cheese', color: '#F1E1A8' },
   ];
 
+   const [burger, setBurger] = useState([...availableIngredients])
+
   const addToBurger = (newBurger) => {
     console.log(newBurger)
   }
@@ -37,7 +40,7 @@ const App = () => {
       <h1>Burger Stacker</h1>
       <section>
         <IngredientList availableIngredients={availableIngredients}/>
-        <BurgerStack />
+        <BurgerStack burger={burger}/>
       </section>
     </main>
   );
