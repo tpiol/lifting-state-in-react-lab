@@ -20,16 +20,19 @@ const App = () => {
     { name: 'Onion', color: 'lightyellow' },
     { name: 'Cheddar Cheese', color: '#FDE18B' },
     { name: 'Swiss Cheese', color: '#F1E1A8' },
-  ];
+  ]
   const [stack, setStack] = useState([])
   const [burger, setBurger] = useState([])
 
   const addToBurger = (ingredient) => {
-    setBurger([...burger, ingredient]);
+    setBurger([ingredient, ...burger]);
   }
 
-  const removeFromBurger = (burger) => {
-  const newBurger =
+  const removeFromBurger = (ingredientObj) => {
+  const newBurger = burger.filter((ingredient) => {
+    return ingredient !== ingredientObj;
+  })
+  setBurger(newBurger);
   }
 
 
@@ -40,10 +43,12 @@ const App = () => {
         <IngredientList 
         availableIngredients={availableIngredients} 
         addToBurger={addToBurger}/>
-        <BurgerStack burger={burger} />
+        <BurgerStack burger={burger} 
+        removeFromBurger={removeFromBurger}
+        />
       </section>
     </main>
-  );
+  )
 };
 
 export default App;
